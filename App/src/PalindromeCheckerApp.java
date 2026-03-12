@@ -1,25 +1,16 @@
-import java.util.Scanner;
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+public class UseCase9PalindromeCheckerApp
+{
+     public static void uc9_RecursiveMethod() {
 
-        Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
+        String input = "racecar";
 
-        int i = 0;
-        int l = a.length();
-        boolean flag = true;
+        boolean isPalindrome = isPalindromeRecursive(input, 0, input.length() - 1);
 
-        while (i < l / 2) {
-            if (a.charAt(i) != a.charAt(l - i - 1)) {
-                flag = false;
-                break;
-            }
-            i++;
-        }
-
-        if (flag)
-            System.out.println("Is a Palindrome");
-        else
-            System.out.println("Not a Palindrome");
+        System.out.println("UC9 Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome + "\n");
+    }
+    public static void main(String [] args)
+    {
+        uc9_RecursiveMethod();
     }
 }
