@@ -1,25 +1,35 @@
 import java.util.Scanner;
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+import java.util.Stack;
 
-        Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
+public class UseCase5PalindromeCheckerApp {
+    public static boolean isPalindromeUsingStack(String str) {
+        Stack<Character> stack = new Stack();
+        str = str.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-        int i = 0;
-        int l = a.length();
-        boolean flag = true;
-
-        while (i < l / 2) {
-            if (a.charAt(i) != a.charAt(l - i - 1)) {
-                flag = false;
-                break;
-            }
-            i++;
+        for (int i = 0; i < str.length(); ++i) {
+            stack.push(str.charAt(i));
         }
 
-        if (flag)
-            System.out.println("Is a Palindrome");
-        else
-            System.out.println("Not a Palindrome");
+        for (int i = 0; i < str.length(); ++i) {
+            if (str.charAt(i) != (Character) stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
+    public static void main(String []args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        boolean result = false;
+        result = isPalindromeUsingStack(input);
+        if (result) {
+            System.out.println("Result: The string IS a palindrome.");
+        } else {
+            System.out.println("Result: The string is NOT a palindrome.");
+        }
+    }
+
 }
