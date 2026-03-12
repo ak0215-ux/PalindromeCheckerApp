@@ -1,25 +1,38 @@
-import java.util.Scanner;
-public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-        Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
+public class UseCase6PalindromeCheckerApp {
+    public static void main (String[] args)
+    {
+        uc6_QueueStackMethod();
+    }
+    public static void uc6_QueueStackMethod() {
 
-        int i = 0;
-        int l = a.length();
-        boolean flag = true;
+        String input = "civic";
 
-        while (i < l / 2) {
-            if (a.charAt(i) != a.charAt(l - i - 1)) {
-                flag = false;
-                break;
-            }
-            i++;
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            queue.add(c);
+            stack.push(c);
         }
 
-        if (flag)
-            System.out.println("Is a Palindrome");
-        else
-            System.out.println("Not a Palindrome");
+        boolean isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("UC6: Queue + Stack Based Palindrome Check");
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println();
     }
+
 }
